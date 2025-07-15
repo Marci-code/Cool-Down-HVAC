@@ -594,9 +594,13 @@ document.getElementById('emergencyForm').addEventListener('submit', async functi
     if (error) {
         console.error('Error:', error);
         alert('There was an error submitting your request. Please try again.');
-    } else {
-        alert('Thank you! Your emergency service request has been submitted. We\'ll contact you within 15 minutes.');
-    }
+    }  else {
+    alert('Thank you! Your emergency service request has been submitted. We\'ll contact you within 15 minutes.');
+    
+    // Show payment options after successful form submission
+    document.getElementById('servicePayment').style.display = 'inline-block';
+    document.getElementById('financingOption').style.display = 'inline-block';
+}
 });
 </script> 
 </body>
