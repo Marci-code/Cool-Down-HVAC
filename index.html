@@ -316,6 +316,12 @@
                             <option value="evening">🌆 Evening (5PM-8PM)</option>
                         </select>
                     </div>
+                    <!-- Hidden fields for spam protection and time tracking -->
+<input type="text" name="website" style="display:none; position:absolute; left:-9999px;" tabindex="-1" autocomplete="off">
+<input type="hidden" id="form-start-time" name="form-start-time" value="">
+                    <button type="submit" class="cta-button">
+    📋 Submit Service Request
+</button>
                     
                     <div class="form-group">
                         <label for="photo-upload">Upload Photo (Optional):</label>
