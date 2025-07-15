@@ -522,5 +522,82 @@
         updateUrgencyTimer();
         setInterval(updateUrgencyTimer, 60000); // Update every minute
     </script>
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// Initialize Supabase
+const supabaseUrl = 'YOUR_PROJECT_URL_HERE'
+const supabaseKey = 'YOUR_ANON_KEY_HERE'
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey)
+
+// Update form submission
+document.getElementById('emergencyForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Get form data
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData);
+    
+    // Spam protection (existing code)
+    const formStartTime = document.getElementById('form-start-time').value;
+    const submissionTime = Date.now();
+    const timeOnForm = submissionTime - parseInt(formStartTime);
+    
+    const honeypot = document.querySelector('input[name="website"]').value;
+    if (honeypot !== '') {
+        console.log('Spam detected');
+        return;
+    }
+    
+    if (timeOnForm < 5000) {
+        alert('Please take a moment to review your information.');
+        return;
+    }
+    
+    // Handle photo upload
+    let photoUrl = null;
+    const photoFile = document.getElementById('photo-upload').files[0];
+    if (photoFile) {
+        const fileExt = photoFile.name.split('.').pop();
+        const fileName = `${Date.now()}.${fileExt}`;
+        
+        const { data: uploadData, error: uploadError } = await supabase.storage
+            .from('ac-photos')
+            .upload(fileName, photoFile);
+            
+        if (!uploadError) {
+            photoUrl = `${supabaseUrl}/storage/v1/object/public/ac-photos/${fileName}`;
+        }
+    }
+    
+    // Save to database
+    const { data: leadData, error } = await supabase
+        .from('leads')
+        .insert([{
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            address: data.address,
+            city: data.city,
+            zip: data.zip,
+            urgency: data.urgency,
+            issue: data.issue,
+            property_type: data['property-type'],
+            best_time: data['best-time'],
+            photo_url: photoUrl,
+            submission_metadata: {
+                timeOnForm: timeOnForm,
+                userAgent: navigator.userAgent,
+                timestamp: new Date().toISOString()
+            }
+        }]);
+    
+    if (error) {
+        console.error('Error:', error);
+        alert('There was an error submitting your request. Please try again.');
+    } else {
+        alert('Thank you! Your emergency service request has been submitted. We\'ll contact you within 15 minutes.');
+    }
+});
+</script> 
 </body>
 </html>
