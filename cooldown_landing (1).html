@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Down HVAC - Emergency AC Repair & Replacement</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="heat" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23heat)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
+            color: #dc3545;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .hero .subheadline {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .hero .urgency {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 40px;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .cta-form {
+            background: white;
+            color: #333;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
+            transform: translateY(20px);
+        }
+        
+        .cta-form h3 {
+            color: #ee5a24;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #ee5a24;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #888888 0%, #666666 100%);
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(136,136,136,0.3);
+        }
+        
+        .social-proof {
+            background: #f5f5f5;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .benefits {
+            padding: 80px 20px;
+            background: #f5f5f5;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .benefit-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #666666 0%, #4a4a4a 100%);
+            color: white;
+            transform: translateY(0);
+            transition: transform 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .guarantee {
+            background: linear-gradient(135deg, #777777 0%, #555555 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .guarantee-box {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .testimonial {
+            background: #f5f5f5;
+            padding: 60px 20px;
+        }
+        
+        .testimonial-card {
+            background: #e8e8e8;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #ee5a24;
+            margin: 20px 0;
+        }
+        
+        .stars {
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subheadline {
+                font-size: 1.3rem;
+            }
+            
+            .cta-form {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>AC Died in This Brutal Heat?</h1>
+            <p class="subheadline">Get Emergency Same-Day Service Before Your Family Suffers Another Scorching Night</p>
+            
+            <div class="urgency">
+                ⚡ EMERGENCY HOTLINE: Available 24/7 During Heat Waves ⚡
+            </div>
+            
+            <div class="cta-form">
+                <h3>🚨 Get Immediate Relief - Emergency Quote Today</h3>
+                <p style="margin-bottom: 25px; color: #666; font-size: 0.9rem;">
+                    <strong>We need your contact info to dispatch our emergency team and provide accurate pricing for your area.</strong>
+                </p>
+                <form id="emergencyForm">
+                    <div class="form-group">
+                        <label for="name">Full Name: *</label>
+                        <input type="text" id="name" name="name" required placeholder="First and Last Name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address: *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number: *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567 - We'll call within 15 minutes">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Service Address: *</label>
+                        <input type="text" id="address" name="address" required placeholder="Street Address">
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label for="city">City: *</label>
+                            <input type="text" id="city" name="city" required placeholder="City">
+                        </div>
+                        <div class="form-group">
+                            <label for="zip">ZIP Code: *</label>
+                            <input type="text" id="zip" name="zip" required placeholder="12345" pattern="[0-9]{5}">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="urgency">How urgent is your situation? *</label>
+                        <select id="urgency" name="urgency" required>
+                            <option value="">Select urgency level</option>
+                            <option value="emergency">🚨 EMERGENCY - No cooling at all</option>
+                            <option value="today">🔥 Need service today</option>
+                            <option value="tomorrow">⏰ Can wait until tomorrow</option>
+                            <option value="planning">📅 Planning ahead</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="issue">What's happening with your AC? *</label>
+                        <select id="issue" name="issue" required>
+                            <option value="">Describe the problem</option>
+                            <option value="not-cooling">❄️ Not cooling at all</option>
+                            <option value="poor-cooling">🌡️ Barely cooling/weak airflow</option>
+                            <option value="strange-sounds">🔊 Making strange noises</option>
+                            <option value="high-bills">💸 Energy bills skyrocketing</option>
+                            <option value="old-system">⏰ System is very old (10+ years)</option>
+                            <option value="new-install">🏠 Need new installation</option>
+                            <option value="other">❓ Other issue</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="property-type">Property Type:</label>
+                        <select id="property-type" name="property-type">
+                            <option value="">Select property type</option>
+                            <option value="single-family">🏠 Single Family Home</option>
+                            <option value="townhouse">🏘️ Townhouse/Condo</option>
+                            <option value="apartment">🏢 Apartment</option>
+                            <option value="commercial">🏬 Commercial Building</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="best-time">Best time to reach you:</label>
+                        <select id="best-time" name="best-time">
+                            <option value="">Select preferred time</option>
+                            <option value="asap">📞 Call me ASAP</option>
+                            <option value="morning">🌅 Morning (8AM-12PM)</option>
+                            <option value="afternoon">☀️ Afternoon (12PM-5PM)</option>
+                            <option value="evening">🌆 Evening (5PM-8PM)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="photo-upload">Upload Photo (Optional):</label>
+                        <input type="file" id="photo-upload" name="photo-upload" accept="image/*" capture="environment" style="padding: 10px; border: 2px dashed #ddd; border-radius: 10px; background: #f9f9f9;">
+                        <small style="display: block; margin-top: 5px; color: #666; font-size: 0.8rem;">
+                            📸 Take a photo of your AC unit, thermostat, or problem area to help our technicians prepare
+                        </small>
+                    </div>
+                    
+                    <!-- Payment Section -->
+                    <div style="background: #e8e8e8; padding: 25px; border-radius: 15px; margin: 25px 0; border: 2px solid #ee5a24;">
+                        <h4 style="margin: 0 0 15px 0; color: #333; text-align: center;">🚀 Payment Options</h4>
+                        
+                        <!-- Service Fee Option -->
+                        <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px; border: 2px solid #ee5a24;">
+                            <div style="text-align: center; margin-bottom: 15px;">
+                                <div style="font-size: 1.6rem; font-weight: bold; color: #ee5a24; margin-bottom: 5px;">
+                                    Emergency Service Fee: $99
+                                </div>
+                                <div style="font-size: 0.9rem; color: #666;">
+                                    + Processing fee (2.9% + $0.30) • Applied toward your final bill
+                                </div>
+                            </div>
+                            <div style="text-align: center; margin-bottom: 10px;">
+                                <button type="button" id="servicePayment" style="background: #ee5a24; color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                                    💳 Pay Service Fee Now
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Financing Option -->
+                        <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px; border: 2px solid #4a90e2;">
+                            <div style="text-align: center; margin-bottom: 15px;">
+                                <div style="font-size: 1.4rem; font-weight: bold; color: #4a90e2; margin-bottom: 5px;">
+                                    💰 Financing Available
+                                </div>
+                                <div style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">
+                                    Competitive rates and terms • Quick approval process • For qualifying repairs
+                                </div>
+                            </div>
+                            <div style="text-align: center; margin-bottom: 10px;">
+                                <button type="button" id="financingOption" style="background: #4a90e2; color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                                    🏦 Apply for Financing
+                                </button>
+                            </div>
+                            <div style="font-size: 0.75rem; color: #999; text-align: center; line-height: 1.3;">
+                                *Financing terms and approval subject to credit review and lending partner approval. Rates, terms, and availability may vary based on creditworthiness and other factors.
+                            </div>
+                        </div>
+                        
+                        <div style="background: white; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+                            <div style="font-weight: bold; margin-bottom: 10px; color: #333;">💳 We Accept:</div>
+                            <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 10px;">
+                                <span style="padding: 5px 10px; background: #f0f0f0; border-radius: 5px; font-size: 0.8rem;">💳 Visa</span>
+                                <span style="padding: 5px 10px; background: #f0f0f0; border-radius: 5px; font-size: 0.8rem;">💳 MasterCard</span>
+                                <span style="padding: 5px 10px; background: #f0f0f0; border-radius: 5px; font-size: 0.8rem;">💳 Amex</span>
+                                <span style="padding: 5px 10px; background: #f0f0f0; border-radius: 5px; font-size: 0.8rem;">💳 Discover</span>
+                            </div>
+                        </div>
+                        
+                        <div style="font-size: 0.8rem; color: #666; text-align: center; line-height: 1.4;">
+                            ✅ Secures immediate technician dispatch<br>
+                            ✅ Multiple payment options available<br>
+                            ✅ Secure payment processing
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="cta-button">
+                        📋 Submit Service Request
+                    </button>
+                    
+                    <p style="margin-top: 15px; font-size: 0.8rem; color: #666; text-align: center;">
+                        🔒 Your information is secure. We'll only use it to provide your service quote and emergency dispatch.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <h2>Join 2,847+ Families Who Chose Cool Down HVAC This Summer</h2>
+            <div style="display: flex; justify-content: center; gap: 40px; margin-top: 30px; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; color: #ee5a24; font-weight: bold;">4.9★</div>
+                    <div>Google Reviews</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; color: #ee5a24; font-weight: bold;">< 2 Hours</div>
+                    <div>Average Response Time</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; color: #ee5a24; font-weight: bold;">15+ Years</div>
+                    <div>In Business</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px; font-size: 2.5rem;">Why Families Choose Cool Down HVAC During Emergencies</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 40px;">When your AC fails in extreme heat, every minute counts. Here's why we're different:</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Same-Day Emergency Service</h3>
+                    <p>No waiting days in the heat. Our emergency team responds within 2 hours for urgent cooling problems.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Expert Diagnostics</h3>
+                    <p>Our certified technicians quickly identify the real problem and provide honest recommendations to get you cool fast.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Transparent Emergency Pricing</h3>
+                    <p>No surprise charges. You'll know the exact cost before we start any work, even during emergency calls.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promise -->
+    <section class="guarantee">
+        <div class="container">
+            <div class="guarantee-box">
+                <h2 style="margin-bottom: 20px;">Our Promise to You</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 20px;">We'll work tirelessly to get cool air flowing in your home again. You'll be satisfied with our professional service and honest recommendations.</p>
+                <p><strong>Your comfort and satisfaction are our top priority during every emergency call.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonial">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px;">What Our Emergency Customers Say</h2>
+            
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p><em>"Our AC died at 2 PM on a 105° day with a newborn in the house. Cool Down HVAC had a technician here in 90 minutes and fixed it completely. Literally saved our family from a dangerous situation."</em></p>
+                <p><strong>- Sarah M., Frustrated Mom → Cool & Comfortable</strong></p>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p><em>"Called 3 other companies during the heat wave - all said 'maybe next week.' Cool Down came out the same day and got us cool again. Professional, fast, and fair pricing even for emergency service."</em></p>
+                <p><strong>- Mike R., Small Business Owner</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('emergencyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Handle photo upload if present
+            const photoFile = document.getElementById('photo-upload').files[0];
+            if (photoFile) {
+                data.hasPhoto = true;
+                data.photoName = photoFile.name;
+                data.photoSize = photoFile.size;
+                console.log('Photo uploaded:', photoFile);
+            }
+            
+            // Calculate total with processing fee
+            const serviceFee = 99.00;
+            const processingFee = (serviceFee * 0.029) + 0.30;
+            const totalAmount = serviceFee + processingFee;
+            
+            // In a real implementation, this would redirect to Stripe Checkout
+            alert(`Form submitted! Redirecting to secure payment...\n\nService Fee: ${serviceFee.toFixed(2)}\nProcessing Fee: ${processingFee.toFixed(2)}\nTotal: ${totalAmount.toFixed(2)}\n\nAfter payment, we'll dispatch a technician within 2 hours.`);
+            
+            // Here you would integrate with Stripe Checkout
+            console.log('Form submitted with data:', data);
+            console.log('Payment amount:', totalAmount.toFixed(2));
+        });
+        
+        // Add urgency countdown timer
+        function updateUrgencyTimer() {
+            const now = new Date();
+            const hours = now.getHours();
+            let message = "";
+            
+            if (hours >= 6 && hours < 18) {
+                message = "⏰ Same-day service available - Call now!";
+            } else {
+                message = "🌙 Emergency night service available - Don't suffer through the night!";
+            }
+            
+            // You could update urgency messaging based on time
+        }
+        
+        updateUrgencyTimer();
+        setInterval(updateUrgencyTimer, 60000); // Update every minute
+    </script>
+</body>
+</html>
